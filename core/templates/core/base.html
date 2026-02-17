@@ -1,0 +1,23 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mini-Food{% endblock title %}</title>
+       {% tailwind_preload_css %}
+       {% tailwind_css %}
+</head>
+<body class="container mx-auto">
+    {% block navbar %}
+     {% include "core/partials/navbar.html" %}
+    {% endblock navbar %}
+    {% block hero %}
+      {% include "core/partials/hero.html" %}
+    {% endblock hero %}
+    {% block maincontent %}{% endblock maincontent %}
+    {% block footer %}
+        {% include "core/partials/footer.html" %}
+    {% endblock footer %}
+</body>
+</html>
