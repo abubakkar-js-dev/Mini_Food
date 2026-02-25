@@ -1,8 +1,52 @@
-{% extends "core/base.html" %}
-{% block title %}Home - MiniFood{% endblock title %}
-    {% block navbar %}
-     {% include "core/partials/navbar.html" %}
-    {% endblock navbar %}
-{% block maincontent %}
-    <h1 class="text-3xl text-white bg-purple-300 px-8 py-12"> Main Content </h1>
+{% extends "core/base.html" %} {% block title %}Home - MiniFood{% endblock title
+%}
+<!--Navbar Section-->
+{% block navbar %} {% include "core/partials/navbar.html" %} {% endblock navbar
+%}
+<!--Hero Section-->
+{% block hero %} {% include "core/partials/hero.html" %} {% endblock hero %} {%
+block maincontent %}
+<!--Menu Section-->
+<section id="menu" class="section-padding bg-base-200">
+      <div class="container mx-auto">
+        <div class="text-center mb-12">
+          <p class="text-primary font-body font-semibold tracking-widest uppercase text-sm mb-2">Our Menu</p>
+          <h2 class="text-4xl md:text-5xl font-bold font-display text-base-content">
+            Today's Specials
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {% for item in menuItems %}
+            <div class="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <figure class="relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  class="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {% if item.tag %}
+                 <div class="badge badge-primary absolute top-3 left-3 font-body">{item.tag}</div>
+                {% endif %}
+              </figure>
+              <div class="card-body p-5">
+                <div class="flex justify-between items-start">
+                  <h3 class="card-title font-display text-lg">{item.name}</h3>
+                  <span class="text-primary font-bold font-body text-lg">{item.price}</span>
+                </div>
+                <div class="flex items-center gap-1 mt-1">
+                  <StarIcon class="h-4 w-4 text-warning" />
+                  <span class="font-body text-sm font-medium">{item.rating}</span>
+                </div>
+                <div class="card-actions justify-end mt-3">
+                  <button class="btn btn-primary btn-sm rounded-full gap-1 font-body">
+                    <ShoppingCartIcon class="h-4 w-4" />
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
 {% endblock maincontent %}
