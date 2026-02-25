@@ -105,7 +105,7 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {% for f in features %}
-             <div key={f.title} class="text-center group">
+             <div class="text-center group">
               <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                 <div class="flex justify-center items-center h-8 w-8 text-primary group-hover:text-white transition-color z-20">
                   {{f.icon | safe}}
@@ -113,6 +113,34 @@
               </div>
               <h3 class="font-display font-bold text-lg mb-2">{{f.title}}</h3>
               <p class="font-body text-muted-foreground text-sm">{{f.desc}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+<!--Testimonials Section-->
+    <section id="testimonials" className="section-padding bg-base-200 py-28">
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-secondary font-body font-semibold tracking-widest uppercase text-sm mb-2">Reviews</p>
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-base-content">
+            What Our Foodies Say
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {% for t in testimonials %}
+                      <div className="card bg-base-100 shadow-sm p-6 hover:shadow-md transition-shadow">
+              <div className="flex gap-1 mb-3">
+                {[...Array(t.rating)].map((_, i) => (
+                  <StarIcon key={i} className="h-5 w-5 text-warning" />
+                ))}
+              </div>
+              <p className="font-body text-base-content/80 mb-4 italic">"{t.text}"</p>
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">{{t.avatar}}</span>
+                <span className="font-body font-semibold">{{t.name}}</span>
+              </div>
             </div>
           {% endfor %}
         </div>

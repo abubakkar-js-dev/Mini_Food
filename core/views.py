@@ -29,4 +29,25 @@ def home(req):
         </svg>""", 
      'title': 'Made with Love', 'desc': 'Chef-crafted recipes bursting with flavor.'},
     ]
-    return render(req, 'core/home.html', context={'menuItems': menuItems, 'features': features})
+
+    testimonials=[
+            {
+            'name': 'Sarah M.',
+            'text': 'The burger was insanely good! Best delivery food I\'ve ever had. Arrived hot and fresh.',
+            'rating': 5,
+            'avatar': '🧑‍🦰',
+            },
+            {
+            'name': 'James R.',
+            'text': 'Poke bowl was fresh and flavorful. Love the quick delivery — will definitely order again!',
+            'rating': 5,
+            'avatar': '👨‍💼',
+            },
+            {
+            'name': 'Emily K.',
+            'text': 'That lava cake is pure heaven. Perfect portion sizes and amazing value for money.',
+            'rating': 5,
+            'avatar': '👩‍🎨',
+            },
+    ]
+    return render(req, 'core/home.html', context={'menuItems': menuItems, 'features': features, 'testimonials': testimonials})
