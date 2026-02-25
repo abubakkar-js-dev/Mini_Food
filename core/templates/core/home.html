@@ -1,5 +1,8 @@
 {% extends "core/base.html" %}
 {% block title %}Home - MiniFood{% endblock title %}
+    {% block navbar %}
+     {% include "core/partials/navbar.html" %}
+    {% endblock navbar %}
 {% block maincontent %}
     <h1 class="text-3xl text-white bg-purple-300 px-8 py-12"> Main Content </h1>
 {% endblock maincontent %}

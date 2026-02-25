@@ -1,16 +1,28 @@
-<div class="hero bg-base-200 min-h-screen">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-      class="max-w-sm rounded-lg shadow-2xl"
-    />
-    <div>
-      <h1 class="text-5xl font-bold">Box Office News!</h1>
-      <p class="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
-      </p>
-      <button class="btn btn-primary">Get Started</button>
+   {% load static %}
+   <div class="hero min-h-screen relative" 
+    style="background-image: url('{% static 'core/images/hero.jpeg' %}');">
+      <div class="hero-overlay hero-overlay-gradient"></div>
+      <div class="hero-content text-center">
+        <div class="max-w-2xl animate-fade-up">
+          <p class="text-secondary font-body font-semibold tracking-widest uppercase text-sm mb-4">
+            Fresh • Fast • Delicious
+          </p>
+          <h1 class="text-5xl md:text-7xl font-bold font-display text-base-100 leading-tight">
+            Taste the
+            <span class="text-secondary"> Difference</span>
+          </h1>
+          <p class="py-6 text-base-100/80 font-body text-lg max-w-lg mx-auto">
+            Handcrafted meals made with fresh ingredients, delivered hot to your doorstep in 30 minutes or less.
+          </p>
+          <div class="flex gap-4 justify-center flex-wrap">
+            <a href="#menu" class="btn btn-primary btn-lg rounded-full px-8 font-body gap-2 shadow-lg">
+              Explore Menu
+              <ArrowRightIcon class="h-5 w-5" />
+            </a>
+            <a href="#features" class="btn btn-outline border-base-100 text-base-100 hover:bg-base-100 hover:text-base-content btn-lg rounded-full px-8 font-body">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

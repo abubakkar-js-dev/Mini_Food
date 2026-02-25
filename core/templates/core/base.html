@@ -1,3 +1,4 @@
+{% load static %}
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
@@ -8,7 +9,7 @@
        {% tailwind_preload_css %}
        {% tailwind_css %}
 </head>
-<body class="container mx-auto">
+<body>
     {% block navbar %}
      {% include "core/partials/navbar.html" %}
     {% endblock navbar %}
@@ -19,5 +20,7 @@
     {% block footer %}
         {% include "core/partials/footer.html" %}
     {% endblock footer %}
+
+    <script src="../static/core/js/navbar.js"></script>
 </body>
 </html>
