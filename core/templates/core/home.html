@@ -94,4 +94,29 @@
     </div>
   </div>
 </section>
+<!--Features Section-->
+   <section id="features" class="section-padding bg-base-100 py-28">
+      <div class="container mx-auto">
+        <div class="text-center mb-12">
+          <p class="text-accent font-body font-semibold tracking-widest uppercase text-sm mb-2">Why Choose Us</p>
+          <h2 class="text-4xl md:text-5xl font-bold font-display text-base-content">
+            We Deliver Happiness
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {% for f in features %}
+             <div key={f.title} class="text-center group">
+              <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                <div class="flex justify-center items-center h-8 w-8 text-primary group-hover:text-white transition-color z-20">
+                  {{f.icon | safe}}
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-lg mb-2">{{f.title}}</h3>
+              <p class="font-body text-muted-foreground text-sm">{{f.desc}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
 {% endblock maincontent %}
