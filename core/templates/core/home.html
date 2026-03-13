@@ -1,18 +1,13 @@
-{% extends "core/base.html" %}
-{% load static %}
-{% block title %}Home - MiniFood{% endblock title %}
+{% extends "core/base.html" %} {% load static %} {% block title %}Home -
+MiniFood{% endblock title %}
 <!--Navbar Section-->
-    {% block navbar %}
-     {% include "core/partials/navbar.html" %}
-    {% endblock navbar %}
+{% block navbar %} {% include "core/partials/navbar.html" %} {% endblock navbar%}
 <!--Hero Section-->
-    {% block hero %}
-      {% include "core/partials/hero.html" %}
-    {% endblock hero %}
+{% block hero %} {% include "core/partials/hero.html" %} {% endblock hero %}
 <!--Main Content-->
 {% block maincontent %}
-  <!--Menu Section-->
-  <section id="menu" class="section-padding bg-base-200 py-28">
+<!--Menu Section-->
+<section id="menu" class="section-padding bg-base-200 py-28">
   <div class="container mx-auto">
     <div class="text-center mb-12">
       <p
@@ -95,56 +90,71 @@
   </div>
 </section>
 <!--Features Section-->
-   <section id="features" class="section-padding bg-base-100 py-28">
-      <div class="container mx-auto">
-        <div class="text-center mb-12">
-          <p class="text-accent font-body font-semibold tracking-widest uppercase text-sm mb-2">Why Choose Us</p>
-          <h2 class="text-4xl md:text-5xl font-bold font-display text-base-content">
-            We Deliver Happiness
-          </h2>
+<section id="features" class="section-padding bg-base-100 py-28">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p
+        class="text-accent font-body font-semibold tracking-widest uppercase text-sm mb-2"
+      >
+        Why Choose Us
+      </p>
+      <h2 class="text-4xl md:text-5xl font-bold font-display text-base-content">
+        We Deliver Happiness
+      </h2>
+    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto"
+    >
+      {% for f in features %}
+      <div class="text-center group">
+        <div
+          class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300"
+        >
+          <div
+            class="flex justify-center items-center h-8 w-8 text-primary group-hover:text-white transition-color z-20"
+          >
+            {{f.icon | safe}}
+          </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          {% for f in features %}
-             <div class="text-center group">
-              <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                <div class="flex justify-center items-center h-8 w-8 text-primary group-hover:text-white transition-color z-20">
-                  {{f.icon | safe}}
-                </div>
-              </div>
-              <h3 class="font-display font-bold text-lg mb-2">{{f.title}}</h3>
-              <p class="font-body text-muted-foreground text-sm">{{f.desc}}</p>
-            </div>
-          {% endfor %}
-        </div>
+        <h3 class="font-display font-bold text-lg mb-2">{{f.title}}</h3>
+        <p class="font-body text-muted-foreground text-sm">{{f.desc}}</p>
       </div>
-    </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 <!--Testimonials Section-->
-    <section id="testimonials" className="section-padding bg-base-200 py-28">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-secondary font-body font-semibold tracking-widest uppercase text-sm mb-2">Reviews</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-base-content">
-            What Our Foodies Say
-          </h2>
+<section id="testimonials" class="section-padding bg-base-200 py-28">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-secondary font-body font-semibold tracking-widest uppercase text-sm mb-2">Reviews</p>
+      <h2 class="text-4xl md:text-5xl font-bold font-display text-base-content">
+        What Our Foodies Say
+      </h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {% for t in testimonials %}
+        <div class="card bg-base-100 shadow-sm p-6 hover:shadow-md transition-shadow rounded-2xl">
+          <div class="flex gap-1 mb-3">
+            {% for r in t.ratings %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-warning">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            {% endfor %}
+          </div>
+          
+          <p class="font-body text-base-content/80 mb-4 italic">"{{ t.text }}"</p>
+          
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">{{ t.avatar }}</span>
+            <span class="font-body font-semibold text-base-content">{{ t.name }}</span>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {% for t in testimonials %}
-                      <div className="card bg-base-100 shadow-sm p-6 hover:shadow-md transition-shadow">
-              <div className="flex gap-1 mb-3">
-                {[...Array(t.rating)].map((_, i) => (
-                  <StarIcon key={i} className="h-5 w-5 text-warning" />
-                ))}
-              </div>
-              <p className="font-body text-base-content/80 mb-4 italic">"{t.text}"</p>
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{{t.avatar}}</span>
-                <span className="font-body font-semibold">{{t.name}}</span>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% endblock maincontent %}
